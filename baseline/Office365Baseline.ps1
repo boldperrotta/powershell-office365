@@ -11,7 +11,7 @@
      Write-Host "3: Press '3' to block countries with high reputation of spam"
      Write-Host "4: Press '4' to Set advanced spam options"
      Write-Host "5: Press '5' to Disable IMAP/POP for all existing accounts and any new accounts"
-     Write-Host "5: Press '6' to Block Mail Rules that Autoforward Mail"
+     Write-Host "6: Press '6' to Block Mail Rules that Autoforward Mail"
      Write-Host "A: Press 'A' to Install Azure AD Powershell Module (Required)"
      Write-Host "Q: Press 'Q' to quit."
 }
