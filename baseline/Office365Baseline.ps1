@@ -11,6 +11,7 @@
      Write-Host "3: Press '3' to block countries with high reputation of spam"
      Write-Host "4: Press '4' to Set advanced spam options"
      Write-Host "5: Press '5' to Disable IMAP/POP for all existing accounts and any new accounts"
+     Write-Host "5: Press '6' to Block Mail Rules that Autoforward Mail"
      Write-Host "A: Press 'A' to Install Azure AD Powershell Module (Required)"
      Write-Host "Q: Press 'Q' to quit."
 }
@@ -36,7 +37,7 @@ do
                 cls
                 'You chose option #2, mailbox and admin auditing will be enabled'
                 #Enable Mailbox Auditing and set 180 day retention
-                Get-mailbox -Filter {(RecipientTypeDetails -eq 'UserMailbox')} | ForEach {Set-Mailbox $_.Identity -AuditEnabled $true -AuditLogAgeLimit 180 -AuditAdmin Copy,Create,FolderBind,HardDelete,MessageBind,Move,MoveToDeletedItems,SendAs,SendOnBehalf,SoftDelete,Update -AuditDelegate Create,FolderBind,HardDelete,Move,MoveToDeletedItems,SendAs,SendOnBehalf,SoftDelete,Update -AuditOwner Create,HardDelete,MailboxLogin,Move,MoveToDeletedItems,SoftDelete,Update} 
+                Get-mailbox -Filter {(RecipientTypeDetails -eq 'UserMailbox')} | ForEach {Set-Mailbox $_.Identity -AuditEnabled $true -AuditLogAgeLimit 180 -AuditAdmin Copy,Create,FolderBind,HardDelete,MailItemAccessed,Move,MoveToDeletedItems,SendAs,SendOnBehalf,SoftDelete,Update -AuditDelegate Create,FolderBind,HardDelete,Move,MoveToDeletedItems,SendAs,SendOnBehalf,SoftDelete,Update -AuditOwner Create,HardDelete,MailboxLogin,Move,MoveToDeletedItems,SoftDelete,Update} 
                 
                 #Enable Unified Audit Logging
                 Set-AdminAuditLogConfig -UnifiedAuditLogIngestionEnabled $true 
@@ -56,7 +57,9 @@ do
                 #Set advanced spam options
                 $Mailboxes = Get-Mailbox -ResultSize Unlimited
                 ForEach ($Mailbox in $Mailboxes) {$Mailbox | Set-CASMailbox -PopEnabled $False -ImapEnabled $False }
-
+           } '6' {
+               #Turn off autoforwarding for the Domain
+               Set-RemoteDomain Default -AutoForwardEnabled $false
            } 'a' {
                 cls
                 'You selected option A, please follow and agree to all prompts  to install the AzureAD Module'
