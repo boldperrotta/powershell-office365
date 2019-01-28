@@ -13,7 +13,6 @@ function Show-Menu
      Write-Host "5: Press '5' to Disable IMAP/POP for all existing accounts and any new accounts"
      Write-Host "6: Press '6' to Block Mail Rules that Autoforward Mail"
      Write-Host "6: Press '7' to check if external email has matching display name with internal user"
-     Write-Host "A: Press 'A' to Install Azure AD Powershell Module"
      Write-Host "Q: Press 'Q' to quit."
 }
 
@@ -91,10 +90,6 @@ do
                    Write-Host "Rule found, updating rule" -ForegroundColor Green
                    Set-TransportRule -Identity $ruleName -Priority 0 -FromScope "NotInOrganization" -AttachmentExtensionMatchesWords .adp,.app,.asp,.bas,.bat,.cer,.chm,.cmd,.cnt,.com,.cpl,.crt,.csh,.der,.exe,.fxp,.gadget,.hlp,.hpj,.hta,.inf,.ins,.isp,.its,.js,.jse,.ksh,.lnk,.mad,.maf,.mag,.mam,.maq,.mar,.mas,.mat,.mau,.mav,.maw,.mda,.mdb,.mde,.mdt,.mdw,.mdz,.msc,.msh,.msh1,.msh2,.mshxml,.msh1xml,.msh2xml,.msi,.msp,.mst,.ops,.osd,.pcd,.pif,.plg,.prf,.prg,.pst,.reg,.scf,.scr,.sct,.shb,.shs,.ps1,.ps1xml,.ps2,.ps2xml,.psc1,.psc2,.tmp,.url,.vb,.vbe,.vbp,.vbs,.vsmacros,.vsw,.ws,.wsc,.wsf,.wsh,.xnk,.ade,.cla,.class,.grp,.jar,.mcf,.ocx,.pl,.xbap -DeleteMessage $true
                     }
-           } 'a' {
-                cls
-                'You selected option A, please follow and agree to all prompts  to install the AzureAD Module'
-                Install-Module AzureAD
            } 'q' {
                 cls
                 Remove-PSSession $Session
