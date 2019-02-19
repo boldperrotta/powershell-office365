@@ -1,0 +1,1 @@
+                Set-HostedContentFilterPolicy -Identity Default -EnableRegionBlockList $true -RegionBlockList CN,RU,UA,JP,IN,HK,GB,BR,DE,AO,AR,BF,BI,BJ,BO,BR,BW,CD,CF,CG,CI,CL,CM,CO,CV,DJ,DZ,EC,EG,EH,ER,ET,FK,GA,GF,GH,GM,GN,GQ,GW,GY,KE,KM,LR,LS,LY,MA,MG,ML,MR,MU,MW,MZ,NA,NE,NG,PE,PY,RE,RW,SC,SD,SH,SL,SN,SO,SR,ST,SZ,TD,TG,TN,TZ,UG,UY,VE,YT,ZA,ZM,ZW
