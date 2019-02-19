@@ -1,0 +1,2 @@
+Set-AdminAuditLogConfig -UnifiedAuditLogIngestionEnabled $true
+Get-mailbox -Filter {(RecipientTypeDetails -eq 'UserMailbox')} | ForEach {Set-Mailbox $_.Identity -AuditEnabled $true -AuditLogAgeLimit 180 -AuditAdmin Copy,Create,FolderBind,HardDelete,MailItemAccessed,Move,MoveToDeletedItems,SendAs,SendOnBehalf,SoftDelete,Update -AuditDelegate Create,FolderBind,HardDelete,Move,MoveToDeletedItems,SendAs,SendOnBehalf,SoftDelete,Update -AuditOwner Create,HardDelete,MailboxLogin,Move,MoveToDeletedItems,SoftDelete,Update} 
