@@ -7,7 +7,7 @@
  
                if (!$rule) {
                     Write-Host "Rule not found, creating rule" -ForegroundColor Green
-                    New-TransportRule -Name $ruleName -Priority 0 -FromScope "NotInOrganization" -SentTo "Chris Toppin" -ApplyHtmlDisclaimerLocation "Prepend" `
+                    New-TransportRule -Name $ruleName -Priority 0 -FromScope "NotInOrganization" -ApplyHtmlDisclaimerLocation "Prepend" `
                          -HeaderMatchesMessageHeader From -HeaderMatchesPatterns $displayNames -ApplyHtmlDisclaimerText $ruleHtml
                }
                else {
